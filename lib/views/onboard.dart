@@ -1,10 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
+import 'package:lottie/lottie.dart';
+
+import '../module/constant.dart';
+import 'login_page.dart';
 
 class OnBoard extends StatelessWidget {
   const OnBoard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return IntroductionScreen(
+      overrideNext: const Text('', style: TextStyle(color: kblack)),
+      isTopSafeArea: true, // Safe Area to avoid overlaps with the status bar
+      showDoneButton: true,
+
+      done: const Text('done', style: TextStyle(color: kblack)),
+
+      // OnDone takes an anonymous function. So when all the slides are completed
+      //we are navigating the user to Login Page
+      onDone: () => Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const Login())),
+
+      // A skip button to skip those pages(some prefer some doesn't)
+      showSkipButton: true,
+      skip: const Text('Skip', style: TextStyle(color: kblack)),
+
+      showNextButton: true,
+
+      // Same here, if the user skips - redirects to loginPage
+      onSkip: () {},
+
+      // Now pages expect a list of PageViewModel
+      // That's what we have added here
+      pages: [
+        PageViewModel(
+          image: Image.asset(
+            'assets/img/login.png',
+            fit: BoxFit.contain,
+            height: 200,
+          ),
+          body: "Freedom talk to any person with assured privacy",
+          title: "Welcome To Online !",
+        ),
+        PageViewModel(
+          image: Lottie.asset("assets/lottieassets/backend.jsonx"),
+          body: "Send text, images, videos and even documents to your friends",
+          title: "Chat with your friends",
+        ),
+        PageViewModel(
+          image: Image.asset("assets/img/login.png"),
+          body:
+              "Appwrite is an Open-Source self-hosted solution that provides developers with a set of easy-to-use and integrate REST APIs to manage their core backend needs.",
+          title: "AppWrite used as a Backend Service",
+        ),
+      ],
+    );
   }
 }
