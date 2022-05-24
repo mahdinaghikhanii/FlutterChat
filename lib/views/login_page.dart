@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../module/widgets.dart';
 import 'register.dart';
 
-class LoginViews extends StatelessWidget {
-  const LoginViews({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
