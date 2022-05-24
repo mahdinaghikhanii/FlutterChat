@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../module/constant.dart';
 import '../module/widgets.dart';
 
-class RegisterViews extends StatelessWidget {
-  const RegisterViews({Key? key}) : super(key: key);
+class Register extends StatelessWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class RegisterViews extends StatelessWidget {
                   secure: false,
                   icon: Icons.email,
                   hintText: "Email",
-                  type: TextInputType.emailAddress, onChange: (String) {},
+                  type: TextInputType.emailAddress, onChange: (str) {},
                   //  contoroller: registerProvider.emailTextEdit,
                 ),
                 SizedBox(
@@ -53,7 +53,7 @@ class RegisterViews extends StatelessWidget {
                   icon: Icons.person,
                   hintText: 'UserName',
                   // contoroller: registerProvider.nameTextEdit,
-                  type: TextInputType.name, onChange: (String) {},
+                  type: TextInputType.name, onChange: (str) {},
                 ),
                 SizedBox(height: size.height * 0.01),
                 MField(
@@ -61,7 +61,7 @@ class RegisterViews extends StatelessWidget {
                   secure: false,
                   icon: Icons.verified_user,
                   hintText: 'Password',
-                  type: TextInputType.visiblePassword, onChange: (String) {},
+                  type: TextInputType.visiblePassword, onChange: (str) {},
                   //  contoroller: registerProvider.passwordTextEdit,
                 ),
                 SizedBox(

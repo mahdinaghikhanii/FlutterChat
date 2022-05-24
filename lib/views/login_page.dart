@@ -40,7 +40,7 @@ class Login extends StatelessWidget {
                 hintText: 'Email',
                 icon: Icons.person,
                 secure: false,
-                type: TextInputType.text, onChange: (String) {},
+                type: TextInputType.text, onChange: (str) {},
                 //contoroller: loginProvider.emailTextEdit,
               ),
               SizedBox(
@@ -52,7 +52,7 @@ class Login extends StatelessWidget {
                 hintText: 'Password',
                 icon: Icons.verified_user,
                 secure: false,
-                type: TextInputType.text, onChange: (String) {},
+                type: TextInputType.text, onChange: (str) {},
               ),
               SizedBox(height: size.height * 0.01),
               MyButton(press: () {}, size: size, text: 'Login'),
@@ -60,12 +60,14 @@ class Login extends StatelessWidget {
                 height: size.height * 0.01,
               ),
               QoustionText(
-                ontap: () {
+                ontapboldqustion: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RegisterViews()));
+                          builder: (context) => const Register()));
                 },
+                qustion: 'Don`t Have Account ?',
+                boldQustion: ' SignUp Now',
               ),
               Text('Mahdi',
                   style: textTheme.subtitle1

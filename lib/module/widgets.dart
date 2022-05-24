@@ -125,23 +125,30 @@ class MyButton extends StatelessWidget {
 }
 
 class QoustionText extends StatelessWidget {
-  const QoustionText({Key? key, required this.ontap}) : super(key: key);
-  final Function()? ontap;
+  const QoustionText(
+      {Key? key,
+      required this.ontapboldqustion,
+      required this.qustion,
+      this.boldQustion})
+      : super(key: key);
+  final Function()? ontapboldqustion;
+  final String qustion;
+  final String? boldQustion;
 
   @override
   Widget build(BuildContext context) {
     final textThme = Theme.of(context).textTheme;
     return InkWell(
-      onTap: ontap,
+      onTap: ontapboldqustion,
       child: Container(
         padding: const EdgeInsets.all(6),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Don`t Have Account ?',
+            Text(qustion,
                 style: textThme.subtitle1
                     ?.copyWith(fontSize: 16, fontWeight: FontWeight.w500)),
-            Text(' SignUp Now',
+            Text(boldQustion ?? '',
                 style: textThme.subtitle1?.copyWith(
                     color: kViolet, fontSize: 16, fontWeight: FontWeight.bold))
           ],
