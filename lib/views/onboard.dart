@@ -35,21 +35,18 @@ class OnBoard extends StatelessWidget {
       // That's what we have added here
       pages: [
         PageViewModel(
-          image: Image.asset(
-            'assets/img/login.png',
-            fit: BoxFit.contain,
-            height: 200,
-          ),
+          image: Lottie.asset('assets/lottie/mobile.json',
+              fit: BoxFit.contain, height: 400),
           body: "Freedom talk to any person with assured privacy",
           title: "Welcome To Online !",
         ),
         PageViewModel(
-          image: Lottie.asset("assets/lottieassets/backend.jsonx"),
+          image: Lottie.asset("assets/lottie/chat.json", height: 400),
           body: "Send text, images, videos and even documents to your friends",
           title: "Chat with your friends",
         ),
         PageViewModel(
-          image: Image.asset("assets/img/login.png"),
+          image: Lottie.asset("assets/lottie/backend.json", height: 400),
           body:
               "Appwrite is an Open-Source self-hosted solution that provides developers with a set of easy-to-use and integrate REST APIs to manage their core backend needs.",
           title: "AppWrite used as a Backend Service",
