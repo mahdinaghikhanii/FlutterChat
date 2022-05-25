@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterchat/module/extension.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -19,8 +20,11 @@ class OnBoard extends StatelessWidget {
 
       // OnDone takes an anonymous function. So when all the slides are completed
       //we are navigating the user to Login Page
-      onDone: () => Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Login())),
+      onDone: () {
+        context.onboardbloc.saveUserUsingOnBoard(1);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const Login()));
+      },
 
       // A skip button to skip those pages(some prefer some doesn't)
       showSkipButton: true,
