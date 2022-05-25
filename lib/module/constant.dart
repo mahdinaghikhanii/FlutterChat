@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hex_color/flutter_hex_color.dart';
 
 String faPrimaryFontFamily = 'IranYekan';
 const Color kpink = Color(0xFFDC9298);
@@ -49,4 +50,11 @@ class Constans {
       TextStyle(color: grey, fontSize: 14);
   static const textStyleFavoriteViewAndBuy =
       TextStyle(color: kyellow, fontSize: 14);
+
+  static Color navyblueshade1 = HexColor('#1C223A');
+  static Color navyblueshade2 = HexColor('#1E233E');
+  static Color navyblueshade3 = HexColor('#161A2C');
+  static Color navyblueshade4 = HexColor('#20263F');
+  static Color whiteShade1 = HexColor('#C7D8EB');
+  static Color lightBlueShade = HexColor('#87A5B9');
 }
