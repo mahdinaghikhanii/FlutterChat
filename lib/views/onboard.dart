@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutterchat/bloc/blocstate.dart';
 import 'package:flutterchat/module/extension.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';
 
 import '../module/constant.dart';
-import 'login_page.dart';
 
 class OnBoard extends StatelessWidget {
-  const OnBoard({Key? key}) : super(key: key);
+  final BlocState state;
+  const OnBoard({Key? key, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,8 @@ class OnBoard extends StatelessWidget {
       // OnDone takes an anonymous function. So when all the slides are completed
       //we are navigating the user to Login Page
       onDone: () {
-        context.onboardbloc.saveUserUsingOnBoard(1);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const Login()));
+        //  context.onboardbloc.saveUserUsingOnBoard(1);
+        context.onboardBlocs.saveUserUsingOnBoard(0);
       },
 
       // A skip button to skip those pages(some prefer some doesn't)
@@ -35,8 +35,7 @@ class OnBoard extends StatelessWidget {
 
       // Same here, if the user skips - redirects to loginPage
       onSkip: () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const Login()));
+        state is Welcome;
       },
 
       // Now pages expect a list of PageViewModel
@@ -54,7 +53,7 @@ class OnBoard extends StatelessWidget {
           // title:
         ),
         PageViewModel(
-          image: Lottie.asset("assets/lottie/chat.json", height: 400),
+          image: Lottie.asset("assets/lottie/chat.json", height: 300),
           body: "Send text, images, videos and even documents to your friends",
           title: "Chat with your friends",
           decoration: const PageDecoration(

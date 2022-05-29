@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterchat/bloc/onboardbloc.dart';
+import 'package:flutterchat/views/login_page.dart';
+import 'package:flutterchat/views/onboard.dart';
 
 import 'bloc/blocstate.dart';
 import 'bloc/themebloc.dart';
 import 'bloc/userbloc.dart';
-import 'views/onboard.dart';
 
 void main() {
   runApp(MultiBlocProvider(providers: [
     BlocProvider<UserBloc>(create: (_) => UserBloc()),
-    BlocProvider<ThemeBloc>(create: (_) => ThemeBloc())
+    BlocProvider<ThemeBloc>(create: (_) => ThemeBloc()),
+    BlocProvider<OnBoardBloc>(create: (_) => OnBoardBloc()),
   ], child: const MyApp()));
 }
 
@@ -27,7 +30,13 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const OnBoard());
+          home: BlocBuilder<OnBoardBloc, BlocState>(builder: (_, state) {
+            if (state is Welcome) return const Login();
+            if (state is Authenticated) return const Login();
+            return OnBoard(
+              state: state,
+            );
+          }));
     });
   }
 }

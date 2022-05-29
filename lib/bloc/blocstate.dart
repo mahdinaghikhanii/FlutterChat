@@ -10,3 +10,8 @@ class Loading extends BlocState {}
 class Failed extends BlocState {}
 
 class Authenticated extends BlocState {}
+
+class Welcome extends BlocState {
+  final int? isViewvews;
+  Welcome(this.isViewvews);
+}
