@@ -24,7 +24,7 @@ class OnBoard extends StatelessWidget {
       //we are navigating the user to Login Page
       onDone: () {
         //  context.onboardbloc.saveUserUsingOnBoard(1);
-        context.onboardBlocs.saveUserUsingOnBoard(0);
+        context.onboardBlocs.saveFirstTimeUserSeeOnBoarding();
       },
 
       // A skip button to skip those pages(some prefer some doesn't)

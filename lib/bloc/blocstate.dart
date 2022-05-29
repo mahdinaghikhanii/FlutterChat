@@ -11,7 +11,4 @@ class Failed extends BlocState {}
 
 class Authenticated extends BlocState {}
 
-class Welcome extends BlocState {
-  final int? isViewvews;
-  Welcome(this.isViewvews);
-}
+class Welcome extends BlocState {}

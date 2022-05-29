@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           ),
           home: BlocBuilder<OnBoardBloc, BlocState>(builder: (_, state) {
             if (state is Welcome) return const Login();
-            if (state is Authenticated) return const Login();
+
             return OnBoard(
               state: state,
             );
