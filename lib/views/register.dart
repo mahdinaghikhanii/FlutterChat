@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterchat/module/extension.dart';
 
 import '../module/constant.dart';
 import '../module/widgets.dart';
@@ -8,13 +9,10 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
-        height: size.height,
+        height: context.height,
         child: Padding(
           padding: const EdgeInsets.only(top: 60),
           child: SingleChildScrollView(
@@ -28,16 +26,16 @@ class Register extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                SizedBox(height: size.height * 0.04),
+                SizedBox(height: context.height * 0.04),
                 Image.asset(
                   'assets/img/signup.png',
-                  width: size.height * 0.34,
+                  width: context.height * 0.34,
                 ),
                 SizedBox(
-                  height: size.height * 0.03,
+                  height: context.height * 0.03,
                 ),
                 MField(
-                  size: size.width * 0.80,
+                  size: context.width * 0.80,
                   secure: false,
                   icon: Icons.email,
                   hintText: "Email",
@@ -45,19 +43,19 @@ class Register extends StatelessWidget {
                   //  contoroller: registerProvider.emailTextEdit,
                 ),
                 SizedBox(
-                  height: size.height * 0.01,
+                  height: context.height * 0.01,
                 ),
                 MField(
-                  size: size.width * 0.80,
+                  size: context.width * 0.80,
                   secure: false,
                   icon: Icons.person,
                   hintText: 'UserName',
                   // contoroller: registerProvider.nameTextEdit,
                   type: TextInputType.name, onChange: (str) {},
                 ),
-                SizedBox(height: size.height * 0.01),
+                SizedBox(height: context.height * 0.01),
                 MField(
-                  size: size.width * 0.80,
+                  size: context.width * 0.80,
                   secure: false,
                   icon: Icons.verified_user,
                   hintText: 'Password',
@@ -65,16 +63,16 @@ class Register extends StatelessWidget {
                   //  contoroller: registerProvider.passwordTextEdit,
                 ),
                 SizedBox(
-                  height: size.height * 0.00,
+                  height: context.height * 0.00,
                 ),
-                MyButton(press: () {}, size: size, text: "SignUp"),
+                MyButton(press: () {}, text: "SignUp"),
                 Visibility(
                   //  visible: registerProvider.getvisivleTextStattusUser,
                   child: Padding(
                       padding: const EdgeInsets.all(2),
                       child: Text(
                         "",
-                        style: textTheme.subtitle1
+                        style: context.textTheme.subtitle1
                             ?.copyWith(color: kblackappbar, fontSize: 16),
                       )),
                 )

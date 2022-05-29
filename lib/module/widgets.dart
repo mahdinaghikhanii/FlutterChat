@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterchat/module/constant.dart';
+import 'package:flutterchat/module/extension.dart';
 
 class MField extends StatelessWidget {
   final double? size;
@@ -92,11 +93,10 @@ class MEdit extends StatelessWidget {
 }
 
 class MyButton extends StatelessWidget {
-  final Size size;
   final Function()? press;
   final String text;
   // ignore: use_key_in_widget_constructors
-  const MyButton({required this.press, required this.size, required this.text});
+  const MyButton({required this.press, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class MyButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
         ),
-        width: size.width * 0.80,
+        width: context.width * 0.80,
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),

@@ -55,7 +55,7 @@ class Login extends StatelessWidget {
                 type: TextInputType.text, onChange: (str) {},
               ),
               SizedBox(height: size.height * 0.01),
-              MyButton(press: () {}, size: size, text: 'Login'),
+              MyButton(press: () {}, text: 'Login'),
               SizedBox(
                 height: size.height * 0.01,
               ),

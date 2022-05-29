@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchat/bloc/onboardbloc.dart';
-import 'package:flutterchat/views/login_page.dart';
+import 'package:flutterchat/views/login.dart';
 import 'package:flutterchat/views/onboard.dart';
 
 import 'bloc/blocstate.dart';
@@ -18,8 +18,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, BlocState>(
@@ -32,7 +30,6 @@ class MyApp extends StatelessWidget {
           ),
           home: BlocBuilder<OnBoardBloc, BlocState>(builder: (_, state) {
             if (state is Welcome) return const Login();
-
             return OnBoard(
               state: state,
             );
