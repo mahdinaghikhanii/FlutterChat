@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterchat/module/extension.dart';
 
 import '../module/constant.dart';
+import '../module/extension.dart';
 import '../module/widgets.dart';
 
 class Register extends StatelessWidget {
