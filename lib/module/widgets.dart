@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterchat/module/constant.dart';
-import 'package:flutterchat/module/extension.dart';
+
+import 'constant.dart';
 
 class MField extends StatelessWidget {
   final double? size;
@@ -127,14 +127,16 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(Constans.mediumBorderRadios),
         ),
-        width: context.width * 0.80,
+        width: double.infinity,
+        height: 90,
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
           child: ElevatedButton(
-            style: ElevatedButton.styleFrom(primary: kViolet),
+            style: ElevatedButton.styleFrom(primary: kred.withOpacity(0.8)),
             onPressed: press,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),

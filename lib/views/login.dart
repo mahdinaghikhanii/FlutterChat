@@ -13,14 +13,12 @@ class Login extends StatelessWidget {
     return Scaffold(
         backgroundColor: Constans.navyblueshade1,
         body: SafeArea(
-          child: SizedBox(
-            height: context.height,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: Container(
+            padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
                   children: [
                     Text(
                       'Hello Again!',
@@ -54,10 +52,33 @@ class Login extends StatelessWidget {
                         icon: CupertinoIcons.eye_slash,
                         hint: 'Password',
                         autoFocus: false,
-                        password: false)
+                        password: false),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      children: [const Spacer(), text('Recovery Password')],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    MyButton(press: () {}, text: "Sign in"),
                   ],
                 ),
-              ),
+                Padding(
+                    padding: const EdgeInsets.only(bottom: 50),
+                    child: RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                          text: "Not o member?",
+                          style: context.textTheme.subtitle1!
+                              .copyWith(color: kwhite)),
+                      TextSpan(
+                          text: " Register now",
+                          style: context.textTheme.subtitle1!
+                              .copyWith(color: kred.withOpacity(0.8)))
+                    ]))),
+              ],
             ),
           ),
         ));
