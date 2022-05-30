@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterchat/bloc/blocstate.dart';
 import 'package:flutterchat/module/constant.dart';
 import 'package:flutterchat/module/widgets.dart';
+import 'package:flutterchat/views/register.dart';
 
 import '../module/extension.dart';
 
@@ -81,7 +82,9 @@ class Login extends StatelessWidget {
                                   press: () {
                                     if (_fromKey.currentState!.validate()) {
                                       context.userbloc.authenticate(
-                                          _username.text, _password.text);
+                                          _username.text,
+                                          _password.text,
+                                          context);
                                     }
                                   },
                                   text: "Sign in")),
@@ -92,17 +95,24 @@ class Login extends StatelessWidget {
                   ),
                   Padding(
                       padding: const EdgeInsets.only(bottom: 50),
-                      child: RichText(
-                          text: TextSpan(children: [
-                        TextSpan(
-                            text: "Not o member?",
-                            style: context.textTheme.subtitle1!
-                                .copyWith(color: kwhite)),
-                        TextSpan(
-                            text: " Register now",
-                            style: context.textTheme.subtitle1!
-                                .copyWith(color: kred.withOpacity(0.8)))
-                      ]))),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Not o member?",
+                                style: context.textTheme.subtitle1!
+                                    .copyWith(color: kwhite)),
+                            AbsorbPointer(
+                              absorbing: state is Loading ? true : false,
+                              child: InkWell(
+                                onTap: () =>
+                                    context.nextScreans(const Register()),
+                                child: Text(" Register now",
+                                    style: context.textTheme.subtitle1!
+                                        .copyWith(
+                                            color: kred.withOpacity(0.8))),
+                              ),
+                            )
+                          ]))
                 ],
               ),
             ),

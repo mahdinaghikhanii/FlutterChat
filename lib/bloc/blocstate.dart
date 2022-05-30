@@ -15,3 +15,5 @@ class Failed extends BlocState {
 class Authenticated extends BlocState {}
 
 class Welcome extends BlocState {}
+
+class CanEmpty extends BlocState {}
