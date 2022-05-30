@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchat/bloc/onboardbloc.dart';
+import 'package:flutterchat/bloc/userbloc.dart';
 import 'package:flutterchat/module/constant.dart';
 
 extension ContextExtension on BuildContext {
   OnBoardBloc get onboardBlocs => read<OnBoardBloc>();
+  UserBloc get userbloc => read<UserBloc>();
 
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;

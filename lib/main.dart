@@ -29,7 +29,11 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           home: BlocBuilder<OnBoardBloc, BlocState>(builder: (_, state) {
-            if (state is Welcome) return const Login();
+            if (state is Welcome) {
+              return Login(
+                state: state,
+              );
+            }
             return OnBoard(
               state: state,
             );

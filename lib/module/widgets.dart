@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterchat/module/extension.dart';
 
 import 'constant.dart';
 
@@ -180,6 +182,34 @@ class QoustionText extends StatelessWidget {
                     color: kViolet, fontSize: 16, fontWeight: FontWeight.bold))
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MError extends StatelessWidget {
+  final Exception exception;
+  const MError({Key? key, required this.exception}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      exception.toString(),
+      style: context.textTheme.subtitle1!
+          .copyWith(color: kred, fontSize: 16, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class Mloading extends StatelessWidget {
+  const Mloading({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: CupertinoActivityIndicator(
+        radius: 15,
+        color: kwhite,
       ),
     );
   }
