@@ -66,7 +66,7 @@ class Register extends StatelessWidget {
                           autoFocus: false,
                           state: state,
                           controller: _password,
-                          password: false),
+                          password: true),
                       const SizedBox(
                         height: 20,
                       ),
@@ -77,7 +77,7 @@ class Register extends StatelessWidget {
                           state: state,
                           pass: _password,
                           notempty: true,
-                          password: false),
+                          password: true),
                       const SizedBox(
                         height: 30,
                       ),

@@ -8,16 +8,11 @@ import '../main.dart';
 import 'blocstate.dart';
 
 class UserBloc extends Cubit<BlocState> {
-  late Account account;
-  Client client = Client();
   UserBloc() : super(Initial()) {
     _init();
   }
-
-  // ignore: non_constant_identifier_names
-  Authentication(client) {
-    account = Account(client);
-  }
+  late Account account;
+  Client client = Client();
 
   _init() {
     client
@@ -33,6 +28,7 @@ class UserBloc extends Cubit<BlocState> {
     } on Exception catch (e) {
       Failed(e);
     }
+    return null;
   }
 
   void authenticate(
@@ -46,7 +42,6 @@ class UserBloc extends Cubit<BlocState> {
           context, MaterialPageRoute(builder: (context) => const Home()));
       emit(Authenticated());
     } catch (e) {
-      state is CanEmpty ? emit(CanEmpty()) : emit(Failed(e as Exception));
       emit(Failed(e as Exception));
       await showDialog(
           context: context,
@@ -68,7 +63,8 @@ class UserBloc extends Cubit<BlocState> {
     if (state is Loading) return;
     try {
       emit(Loading());
-      await account.createSession(email: username, password: pass);
+      await account.create(
+          email: username, password: pass, userId: 'unique()', name: username);
       await Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const Home()));
     } catch (e) {
