@@ -5,61 +5,9 @@ import 'package:flutterchat/bloc/blocstate.dart';
 import 'constant.dart';
 import 'extension.dart';
 
-class MField extends StatelessWidget {
-  final double? size;
-  final TextInputType? type;
-  final bool? secure;
-  final String? hintText;
-  final bool notempty;
-  final bool autofucose;
-  final IconData? icon;
-  final Function(String)? onChange;
-  final TextEditingController? contoroller;
-
-  // ignore: use_key_in_widget_constructors
-  const MField(
-      {this.size,
-      required this.onChange,
-      this.notempty = false,
-      this.contoroller,
-      this.secure,
-      this.icon,
-      this.autofucose = false,
-      this.hintText,
-      this.type});
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Container(
-        width: size,
-        margin: const EdgeInsets.only(top: 5),
-        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18), color: kViolet),
-        child: TextFormField(
-          validator: (val) {
-            if ((val ?? '').isEmpty && notempty) {
-              return "cannot be empty";
-            }
-            return null;
-          },
-          onChanged: onChange,
-          controller: contoroller,
-          style: textTheme.button?.copyWith(color: kwhite),
-          cursorColor: kViolet,
-          decoration: InputDecoration(
-              icon: Icon(icon, color: kwhite),
-              hintText: hintText,
-              hintStyle: textTheme.button?.copyWith(color: kwhite),
-              border: InputBorder.none),
-        ));
-  }
-}
-
 class MEdit extends StatelessWidget {
   final String hint;
-  final Function(String)? onChange;
+  final Function(String?)? onChange;
   final bool autoFocus;
   final bool notempty;
   final TextEditingController? controller;
@@ -88,8 +36,75 @@ class MEdit extends StatelessWidget {
         validator: (val) {
           if ((val ?? '').isEmpty && notempty) {
             state is CanEmpty;
+            return "Enter user name and password";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: Constans.normalPadding),
+              child: Icon(
+                icon,
+                color: kwhite.withOpacity(0.4),
+                size: 26,
+              ),
+            ),
+            enabled: true,
+            //   fillColor: ,
+            //  filled: true,
 
-            state is Failed;
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white, width: 2),
+              borderRadius: BorderRadius.circular(Constans.mediumBorderRadios),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: kwhite.withOpacity(0.4), width: 2),
+              borderRadius: BorderRadius.circular(Constans.mediumBorderRadios),
+            ),
+            contentPadding: const EdgeInsets.all(26),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8), gapPadding: 18),
+            labelText: hint,
+            hintStyle: const TextStyle(color: Colors.grey, fontSize: 16),
+            labelStyle: const TextStyle(
+                color: kwhite, fontSize: 16, fontWeight: FontWeight.w600)),
+        obscureText: password);
+  }
+}
+
+class MEditConfigPassword extends StatelessWidget {
+  final String hint;
+  final Function(String?)? onChange;
+  final bool autoFocus;
+  final bool notempty;
+  final TextEditingController? controller;
+  final bool password;
+  final BlocState? state;
+  final TextEditingController pass;
+  final IconData? icon;
+
+  const MEditConfigPassword(
+      {required this.hint,
+      required this.pass,
+      required this.autoFocus,
+      required this.password,
+      this.state,
+      this.icon,
+      this.notempty = false,
+      this.controller,
+      this.onChange,
+      Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+        style: const TextStyle(fontSize: 18, color: kwhite),
+        controller: controller,
+        onChanged: onChange,
+        validator: (value) {
+          if (value != pass.text) {
+            return 'Passwords do not match!';
           }
           return null;
         },

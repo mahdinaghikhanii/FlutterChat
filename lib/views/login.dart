@@ -53,7 +53,7 @@ class Login extends StatelessWidget {
                       MEdit(
                           hint: 'Enter username',
                           autoFocus: false,
-                          notempty: true,
+                          notempty: false,
                           controller: _username,
                           state: state,
                           password: false),

@@ -53,7 +53,7 @@ class Register extends StatelessWidget {
                       MEdit(
                           hint: 'Enter username',
                           autoFocus: false,
-                          notempty: true,
+                          notempty: false,
                           state: state,
                           controller: _username,
                           password: false),
@@ -66,17 +66,16 @@ class Register extends StatelessWidget {
                           autoFocus: false,
                           state: state,
                           controller: _password,
-                          notempty: true,
                           password: false),
                       const SizedBox(
                         height: 20,
                       ),
-                      MEdit(
+                      MEditConfigPassword(
                           icon: CupertinoIcons.eye_slash,
-                          hint: 'Password',
+                          hint: 'Config Password',
                           autoFocus: false,
                           state: state,
-                          controller: _password,
+                          pass: _password,
                           notempty: true,
                           password: false),
                       const SizedBox(
@@ -92,10 +91,8 @@ class Register extends StatelessWidget {
                               : MyButton(
                                   press: () {
                                     if (_fromKey.currentState!.validate()) {
-                                      context.userbloc.authenticate(
-                                          _username.text,
-                                          _password.text,
-                                          context);
+                                      context.userbloc.register(_username.text,
+                                          _password.text, context);
                                     }
                                   },
                                   text: "Sign in")),
