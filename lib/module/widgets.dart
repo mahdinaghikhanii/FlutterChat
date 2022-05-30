@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterchat/module/extension.dart';
 
 import 'constant.dart';
+import 'extension.dart';
 
 class MField extends StatelessWidget {
   final double? size;
@@ -79,10 +79,11 @@ class MEdit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        style: const TextStyle(fontSize: 18, color: kwhite),
         controller: controller,
         onChanged: onChange,
         validator: (val) {
-          if ((val ?? '').isEmpty && notempty) {
+          if ((val ?? '').isEmpty && notempty && !val!.contains('@')) {
             return "cannot be empty";
           }
           return null;
