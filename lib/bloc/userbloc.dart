@@ -9,17 +9,27 @@ import 'blocstate.dart';
 
 class UserBloc extends Cubit<BlocState> {
   UserBloc() : super(Initial()) {
+    _client();
     _init();
   }
   late Account account;
   Client client = Client();
-
-  _init() {
+  _client() {
     client
         .setEndpoint(Constans.endpoint)
         .setProject(Constans.projectId)
         .setSelfSigned(status: true);
     account = Account(client);
+  }
+
+  _init() {
+    final user = getAccount();
+    if (user != null) {
+      //  This is how you can modify the state of the providers
+      emit(Authenticated());
+    } else {
+      emit(Problems());
+    }
   }
 
   Future<User?> getAccount() async {

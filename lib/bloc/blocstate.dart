@@ -12,6 +12,8 @@ class Failed extends BlocState {
   Failed(this.exception);
 }
 
+class Problems extends BlocState {}
+
 class Authenticated extends BlocState {}
 
 class Welcome extends BlocState {}

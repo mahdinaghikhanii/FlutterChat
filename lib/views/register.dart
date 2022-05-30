@@ -65,6 +65,7 @@ class Register extends StatelessWidget {
                           hint: 'Password',
                           autoFocus: false,
                           state: state,
+                          notempty: true,
                           controller: _password,
                           password: true),
                       const SizedBox(
@@ -76,7 +77,6 @@ class Register extends StatelessWidget {
                           autoFocus: false,
                           state: state,
                           pass: _password,
-                          notempty: true,
                           password: true),
                       const SizedBox(
                         height: 30,
@@ -95,7 +95,7 @@ class Register extends StatelessWidget {
                                           _password.text, context);
                                     }
                                   },
-                                  text: "Sign in")),
+                                  text: "Create Account")),
                       state is Failed
                           ? MError(exception: (state as Failed).exception)
                           : state is CanEmpty
@@ -114,7 +114,7 @@ class Register extends StatelessWidget {
                                 onTap: () => context.nextAndRep(Login(
                                   state: state,
                                 )),
-                                child: Text(" Register now !",
+                                child: Text("Sign in",
                                     style: context.textTheme.subtitle1!
                                         .copyWith(
                                             color: kwhite.withOpacity(0.8))),
