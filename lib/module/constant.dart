@@ -25,6 +25,8 @@ const IconData arrowdownleft = CupertinoIcons.arrow_down_left;
 const IconData arrowupright = CupertinoIcons.arrow_up_right;
 
 class Constans {
+  static const String projectId = "628ccbd1c53b1a41437e";
+  static const String endpoint = 'http://localhost:4003/v1';
   static const double fontButtonSisze = 14;
 
   // pading
