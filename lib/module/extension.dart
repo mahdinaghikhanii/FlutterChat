@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterchat/bloc/onboardbloc.dart';
-import 'package:flutterchat/bloc/userbloc.dart';
-import 'package:flutterchat/module/constant.dart';
+
+import '../bloc/onboardbloc.dart';
+import '../bloc/userbloc.dart';
+import 'constant.dart';
 
 extension ContextExtension on BuildContext {
   OnBoardBloc get onboardBlocs => read<OnBoardBloc>();
@@ -13,6 +14,11 @@ extension ContextExtension on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
   void nextScreans(Widget child) =>
       Navigator.push(this, MaterialPageRoute(builder: (context) => child));
+
+  void nextAndRep(Widget child) {
+    Navigator.pushReplacement(
+        this, MaterialPageRoute(builder: (context) => child));
+  }
 }
 
 extension WidgetsExtension on Widget {

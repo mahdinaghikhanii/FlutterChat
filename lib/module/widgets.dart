@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterchat/bloc/blocstate.dart';
 
 import 'constant.dart';
 import 'extension.dart';
@@ -63,12 +64,14 @@ class MEdit extends StatelessWidget {
   final bool notempty;
   final TextEditingController? controller;
   final bool password;
+  final BlocState? state;
   final IconData? icon;
 
   const MEdit(
       {required this.hint,
       required this.autoFocus,
       required this.password,
+      this.state,
       this.icon,
       this.notempty = false,
       this.controller,
@@ -83,8 +86,10 @@ class MEdit extends StatelessWidget {
         controller: controller,
         onChanged: onChange,
         validator: (val) {
-          if ((val ?? '').isEmpty && notempty && !val!.contains('@')) {
-            return "cannot be empty";
+          if ((val ?? '').isEmpty && notempty) {
+            state is CanEmpty;
+
+            state is Failed;
           }
           return null;
         },
@@ -190,7 +195,11 @@ class QoustionText extends StatelessWidget {
 
 class MError extends StatelessWidget {
   final Exception exception;
-  const MError({Key? key, required this.exception}) : super(key: key);
+
+  const MError({
+    Key? key,
+    required this.exception,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

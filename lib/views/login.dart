@@ -50,17 +50,23 @@ class Login extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      const MEdit(
+                      MEdit(
                           hint: 'Enter username',
                           autoFocus: false,
+                          notempty: true,
+                          controller: _username,
+                          state: state,
                           password: false),
                       const SizedBox(
                         height: 20,
                       ),
-                      const MEdit(
+                      MEdit(
                           icon: CupertinoIcons.eye_slash,
                           hint: 'Password',
                           autoFocus: false,
+                          state: state,
+                          controller: _password,
+                          notempty: true,
                           password: false),
                       const SizedBox(
                         height: 30,
@@ -90,7 +96,9 @@ class Login extends StatelessWidget {
                                   text: "Sign in")),
                       state is Failed
                           ? MError(exception: (state as Failed).exception)
-                          : Container()
+                          : state is CanEmpty
+                              ? const Text('pls enter username or password')
+                              : Container()
                     ],
                   ),
                   Padding(
@@ -104,8 +112,9 @@ class Login extends StatelessWidget {
                             AbsorbPointer(
                               absorbing: state is Loading ? true : false,
                               child: InkWell(
-                                onTap: () =>
-                                    context.nextScreans(const Register()),
+                                onTap: () => context.nextAndRep(Register(
+                                  state: state,
+                                )),
                                 child: Text(" Register now",
                                     style: context.textTheme.subtitle1!
                                         .copyWith(
