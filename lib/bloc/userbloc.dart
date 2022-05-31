@@ -114,5 +114,11 @@ class UserBloc extends Cubit<BlocState> {
     } catch (e) {}
   }
 
-  void pickImage(ImagePicker picker) {}
+  void pickImage(ImagePicker picker) async {
+    final ImagePicker _picker = ImagePicker();
+    XFile? _image;
+    final XFile? img = await _picker.pickImage(source: ImageSource.gallery);
+
+    _image = img;
+  }
 }

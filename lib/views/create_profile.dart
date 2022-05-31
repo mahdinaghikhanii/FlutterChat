@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterchat/module/extension.dart';
 import 'package:flutterchat/module/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../module/constant.dart';
 
@@ -9,6 +10,7 @@ class CreateProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ImagePicker _picker = ImagePicker();
     return Scaffold(
       backgroundColor: Constans.navyblueshade1,
       body: SafeArea(
@@ -65,10 +67,7 @@ class CreateProfile extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(Constans.bigBorderRadios),
                         onTap: () async {
-                          //   await upoadFile.selectImage();
-                          /*  await storage
-                              .uploadImgae(upoadFile.getPath, upoadFile.fileName)
-                              .then((value) => log("done"));*/
+                          context.userbloc.pickImage(_picker);
                         },
                         child: Container(
                             width: 55,
