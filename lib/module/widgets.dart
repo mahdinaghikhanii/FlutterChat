@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterchat/bloc/blocstate.dart';
 
+import '../bloc/blocstate.dart';
 import 'constant.dart';
 import 'extension.dart';
 

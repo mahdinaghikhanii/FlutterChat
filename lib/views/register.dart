@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterchat/bloc/blocstate.dart';
-import 'package:flutterchat/views/login.dart';
 
+import '../bloc/blocstate.dart';
 import '../module/constant.dart';
 import '../module/extension.dart';
 import '../module/widgets.dart';
+import 'login.dart';
 
 TextEditingController _username = TextEditingController();
 TextEditingController _password = TextEditingController();

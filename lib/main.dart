@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterchat/bloc/onboardbloc.dart';
-import 'package:flutterchat/views/login.dart';
-import 'package:flutterchat/views/onboard.dart';
 
 import 'bloc/blocstate.dart';
+import 'bloc/onboardbloc.dart';
 import 'bloc/themebloc.dart';
 import 'bloc/userbloc.dart';
+import 'views/login.dart';
+import 'views/onboard.dart';
 
 void main() {
   runApp(MultiBlocProvider(providers: [
@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
             if (state is Welcome) {
               return BlocBuilder<UserBloc, BlocState>(
                 builder: (_, states) {
+                  //  if (state is Authenticated) return const Home();
+                  // if (state is Problems) return Login(state: state);
                   return Login(state: states);
                 },
               );
@@ -41,14 +43,5 @@ class MyApp extends StatelessWidget {
             );
           }));
     });
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

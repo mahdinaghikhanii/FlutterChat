@@ -1,16 +1,18 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchat/module/constant.dart';
 
-import '../main.dart';
+import '../views/home.dart';
 import 'blocstate.dart';
 
 class UserBloc extends Cubit<BlocState> {
   UserBloc() : super(Initial()) {
     _client();
-    _init();
+    //_init();
   }
   late Account account;
   Client client = Client();
@@ -22,10 +24,9 @@ class UserBloc extends Cubit<BlocState> {
     account = Account(client);
   }
 
-  _init() {
+  init() {
     final user = getAccount();
     if (user != null) {
-      //  This is how you can modify the state of the providers
       emit(Authenticated());
     } else {
       emit(Problems());
@@ -79,6 +80,19 @@ class UserBloc extends Cubit<BlocState> {
           context, MaterialPageRoute(builder: (context) => const Home()));
     } catch (e) {
       emit(Failed(e as Exception));
+      await showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: const Text('Error Occured'),
+                content: Text(e.toString()),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text("Ok"))
+                ],
+              ));
     }
   }
 
