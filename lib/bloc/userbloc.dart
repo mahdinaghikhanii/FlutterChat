@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchat/module/constant.dart';
 import 'package:flutterchat/views/create_profile.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../views/home.dart';
 import 'blocstate.dart';
@@ -105,4 +106,13 @@ class UserBloc extends Cubit<BlocState> {
       emit(Failed(e as Exception));
     }
   }
+
+  void createUser(String username, String bio, FileImage image) async {
+    if (state is Loading) return;
+    try {
+      emit(Loading());
+    } catch (e) {}
+  }
+
+  void pickImage(ImagePicker picker) {}
 }

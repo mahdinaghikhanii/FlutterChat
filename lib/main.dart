@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterchat/views/create_profile.dart';
 
 import 'bloc/blocstate.dart';
 import 'bloc/onboardbloc.dart';
 import 'bloc/themebloc.dart';
 import 'bloc/userbloc.dart';
-import 'views/login.dart';
+import 'views/create_profile.dart';
 import 'views/onboard.dart';
 
 void main() {
