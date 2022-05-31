@@ -5,6 +5,7 @@ import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchat/module/constant.dart';
+import 'package:flutterchat/views/create_profile.dart';
 
 import '../views/home.dart';
 import 'blocstate.dart';
@@ -76,8 +77,8 @@ class UserBloc extends Cubit<BlocState> {
       emit(Loading());
       await account.create(
           email: username, password: pass, userId: 'unique()', name: username);
-      await Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Home()));
+      await Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const CreateProfile()));
     } catch (e) {
       emit(Failed(e as Exception));
       await showDialog(

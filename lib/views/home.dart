@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterchat/module/constant.dart';
-import 'package:flutterchat/module/extension.dart';
+
+import '../module/constant.dart';
+import '../module/extension.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

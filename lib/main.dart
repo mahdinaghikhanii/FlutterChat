@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterchat/views/create_profile.dart';
 
 import 'bloc/blocstate.dart';
 import 'bloc/onboardbloc.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
                 builder: (_, states) {
                   //  if (state is Authenticated) return const Home();
                   // if (state is Problems) return Login(state: state);
-                  return Login(state: states);
+                  // return Login(state: states);
+                  return CreateProfile();
                 },
               );
             }
