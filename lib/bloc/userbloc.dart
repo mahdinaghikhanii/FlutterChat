@@ -18,6 +18,10 @@ class UserBloc extends Cubit<BlocState> {
     _client();
     //_init();
   }
+
+  final ImagePicker _picker = ImagePicker();
+  XFile? _image;
+
   late Account account;
   Client client = Client();
   _client() {
@@ -113,17 +117,33 @@ class UserBloc extends Cubit<BlocState> {
     if (state is Loading) return;
     try {
       emit(Loading());
+
+      //_image != null ? await
     } catch (e) {
       emit(Failed(Exception(e)));
     }
   }
 
-  void pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    // XFile? _image;
+  /* Future<void> createUser() async {
+    _isloading = true;
+    if (!_formKey.currentState!.validate()) {
+      _isloading = false;
+      return;
+    }
+    _image != null
+        ? await _userData.uploadProfilePicture(_image!.path, _image!.name).then(
+            (imgId) => _userData.addUser(_name.text, _bio.text, imgId ?? ''))
+        : _userData.addUser(_name.text, _bio.text, 'assets/images/profile.png');
+
+    ref.watch(currentLoggedUserProvider.state).state =
+        await _userData.getCurrentUser();
+
+    await Navigator.of(context).pushReplacementNamed(HomePage.routename);
+  }*/
+
+  void pickImage(ImagePicker? image, XFile? file) async {
     final XFile? img = await _picker.pickImage(source: ImageSource.gallery);
     log(img.toString());
-
-    //  _image = img;
+    file = img;
   }
 }

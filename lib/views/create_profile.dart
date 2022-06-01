@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../module/constant.dart';
 import '../module/extension.dart';
@@ -9,6 +10,8 @@ class CreateProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    XFile? _image;
+    final ImagePicker _picker = ImagePicker();
     return Scaffold(
       backgroundColor: Constans.navyblueshade1,
       body: SafeArea(
@@ -42,20 +45,21 @@ class CreateProfile extends StatelessWidget {
                   Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(0),
-                        width: 160,
-                        height: 160,
-                        child: CircleAvatar(
-                          backgroundColor: kgrey300,
-                          child: ClipOval(
-                            child: Image.asset(
-                              "assets/icons/users.png",
-                              width: 155,
-                              height: 155,
-                            ),
-                          ),
-                        ),
-                      ),
+                          padding: const EdgeInsets.all(0),
+                          width: 160,
+                          height: 160,
+                          child: _image == null
+                              ? CircleAvatar(
+                                  backgroundColor: kgrey300,
+                                  child: ClipOval(
+                                    child: Image.asset(
+                                      "assets/icons/users.png",
+                                      width: 155,
+                                      height: 155,
+                                    ),
+                                  ),
+                                )
+                              : Container()),
                     ],
                   ),
                   Positioned(
@@ -65,7 +69,7 @@ class CreateProfile extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(Constans.bigBorderRadios),
                         onTap: () async {
-                          context.userbloc.pickImage();
+                          context.userbloc.pickImage(_picker, _image);
                         },
                         child: Container(
                             width: 55,
