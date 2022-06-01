@@ -5,7 +5,8 @@ import 'bloc/blocstate.dart';
 import 'bloc/onboardbloc.dart';
 import 'bloc/themebloc.dart';
 import 'bloc/userbloc.dart';
-import 'views/create_profile.dart';
+import 'views/home.dart';
+import 'views/login.dart';
 import 'views/onboard.dart';
 
 void main() {
@@ -32,10 +33,10 @@ class MyApp extends StatelessWidget {
             if (state is Welcome) {
               return BlocBuilder<UserBloc, BlocState>(
                 builder: (_, states) {
-                  //  if (state is Authenticated) return const Home();
-                  // if (state is Problems) return Login(state: state);
-                  // return Login(state: states);
-                  return CreateProfile();
+                  if (state is Authenticated) return const Home();
+                  if (state is Problems) return Login(state: state);
+                  return Login(state: states);
+                  // return CreateProfile();
                 },
               );
             }

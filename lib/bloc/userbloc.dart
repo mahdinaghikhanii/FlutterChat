@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'dart:developer';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
@@ -111,14 +113,17 @@ class UserBloc extends Cubit<BlocState> {
     if (state is Loading) return;
     try {
       emit(Loading());
-    } catch (e) {}
+    } catch (e) {
+      emit(Failed(Exception(e)));
+    }
   }
 
-  void pickImage(ImagePicker picker) async {
+  void pickImage() async {
     final ImagePicker _picker = ImagePicker();
-    XFile? _image;
+    // XFile? _image;
     final XFile? img = await _picker.pickImage(source: ImageSource.gallery);
+    log(img.toString());
 
-    _image = img;
+    //  _image = img;
   }
 }
