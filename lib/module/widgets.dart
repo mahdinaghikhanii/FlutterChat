@@ -130,6 +130,10 @@ class MEditConfigPassword extends StatelessWidget {
               borderRadius: BorderRadius.circular(Constans.mediumBorderRadios),
             ),
             contentPadding: const EdgeInsets.all(26),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: kred.withOpacity(0.4), width: 2),
+              borderRadius: BorderRadius.circular(Constans.mediumBorderRadios),
+            ),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8), gapPadding: 18),
             labelText: hint,
