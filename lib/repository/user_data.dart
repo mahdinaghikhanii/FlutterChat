@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutterchat/repository/nosignaluser.dart';
-import 'package:no_signal/models/user.dart';
 
 /// [UserData] class
 /// This class is used to handle the user data
@@ -44,7 +43,8 @@ class UserData {
     try {
       User res = await account.get();
       File? result = await storage.createFile(
-        file: await MultipartFile.fromPath('file', filePath, filename: imgName),
+        file:
+            await MultipartFile.fromPatzh('file', filePath, filename: imgName),
         fileId: 'unique()',
         read: ['role:all', 'user:${res.$id}'], bucketId: 'unique()',
         // Make sure to give [role:all]
