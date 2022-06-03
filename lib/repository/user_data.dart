@@ -46,7 +46,7 @@ class UserData {
       File? result = await storage.createFile(
         file: InputFile(filename: imgName, path: filePath),
         fileId: 'unique()',
-        read: ['role:all', 'user:${res.$id}'], bucketId: 'unique()',
+        read: ['role:all', 'user:${res.$id}'], bucketId: '62963d74b4fccb6a09f1',
         // Make sure to give [role:all]
         // So that every authenticated user can access it
         // If you don't give any read permissions, by default the sole user

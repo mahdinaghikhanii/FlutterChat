@@ -1,7 +1,5 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'dart:developer';
-
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +14,10 @@ import 'blocstate.dart';
 class UserBloc extends Cubit<BlocState> {
   UserBloc() : super(Initial()) {
     _client();
-    //_init();
   }
 
   final ImagePicker _picker = ImagePicker();
-  XFile? _image;
+  XFile? image;
 
   late Account account;
   late Storage storage;
@@ -143,9 +140,15 @@ class UserBloc extends Cubit<BlocState> {
     await Navigator.of(context).pushReplacementNamed(HomePage.routename);
   }*/
 
-  void pickImage(ImagePicker? image, XFile? file) async {
-    final _ = await _picker.pickImage(source: ImageSource.gallery);
-    log(_image.toString());
-    file = _image;
+  pickImage(ImagePicker? image) async {
+    try {
+      final XFile? imgAddres =
+          await _picker.pickImage(source: ImageSource.gallery);
+      if (imgAddres == null) return;
+      image = imgAddres as ImagePicker?;
+      emit(LoadingImage());
+    } catch (e) {
+      emit(Failed(Exception(e)));
+    }
   }
 }
