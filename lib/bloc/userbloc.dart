@@ -23,6 +23,7 @@ class UserBloc extends Cubit<BlocState> {
   XFile? _image;
 
   late Account account;
+  late Storage storage;
   Client client = Client();
   _client() {
     client
@@ -30,6 +31,7 @@ class UserBloc extends Cubit<BlocState> {
         .setProject(Constans.projectId)
         .setSelfSigned(status: true);
     account = Account(client);
+    storage = Storage(client);
   }
 
   init() {

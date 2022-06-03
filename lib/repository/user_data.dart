@@ -39,12 +39,14 @@ class UserData {
   /// But here we don't need for that
   ///
   ///
+  ///
   Future<String?> uploadProfilePicture(String filePath, String imgName) async {
+    final uplad =
+        await MultipartFile.fromPath('file', filePath, filename: imgName);
     try {
       User res = await account.get();
       File? result = await storage.createFile(
-        file:
-            await MultipartFile.fromPatzh('file', filePath, filename: imgName),
+        file: InputFile(filename: imgName, path: filePath),
         fileId: 'unique()',
         read: ['role:all', 'user:${res.$id}'], bucketId: 'unique()',
         // Make sure to give [role:all]
