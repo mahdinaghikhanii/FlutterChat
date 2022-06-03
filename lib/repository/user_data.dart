@@ -41,8 +41,6 @@ class UserData {
   ///
   ///
   Future<String?> uploadProfilePicture(String filePath, String imgName) async {
-    final uplad =
-        await MultipartFile.fromPath('file', filePath, filename: imgName);
     try {
       User res = await account.get();
       File? result = await storage.createFile(

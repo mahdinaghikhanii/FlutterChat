@@ -87,7 +87,7 @@ class UserBloc extends Cubit<BlocState> {
       await account.create(
           email: username, password: pass, userId: 'unique()', name: username);
       await Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const CreateProfile()));
+          MaterialPageRoute(builder: (context) => CreateProfile(state: state)));
     } catch (e) {
       emit(Failed(e as Exception));
       await showDialog(
@@ -144,8 +144,8 @@ class UserBloc extends Cubit<BlocState> {
   }*/
 
   void pickImage(ImagePicker? image, XFile? file) async {
-    final XFile? img = await _picker.pickImage(source: ImageSource.gallery);
-    log(img.toString());
-    file = img;
+    final _ = await _picker.pickImage(source: ImageSource.gallery);
+    log(_image.toString());
+    file = _image;
   }
 }

@@ -6,8 +6,6 @@ import 'bloc/blocstate.dart';
 import 'bloc/onboardbloc.dart';
 import 'bloc/themebloc.dart';
 import 'bloc/userbloc.dart';
-import 'views/home.dart';
-import 'views/login.dart';
 import 'views/onboard.dart';
 
 void main() {
@@ -37,7 +35,9 @@ class MyApp extends StatelessWidget {
                   /*  if (state is Authenticated) return const Home();
                   if (state is Problems) return Login(state: state);
                   return Login(state: states);*/
-                  return const CreateProfile();
+                  return CreateProfile(
+                    state: state,
+                  );
                 },
               );
             }

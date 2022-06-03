@@ -1,16 +1,24 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutterchat/bloc/blocstate.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../bloc/userbloc.dart';
 import '../module/constant.dart';
 import '../module/extension.dart';
 import '../module/widgets.dart';
+import '../repository/user_data.dart';
 
 class CreateProfile extends StatelessWidget {
-  const CreateProfile({Key? key}) : super(key: key);
+  final BlocState state;
+  const CreateProfile({Key? key, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    XFile? _image;
+    final bloc = UserBloc();
+    final userdata = UserData(bloc.client);
+    XFile? image;
     final ImagePicker _picker = ImagePicker();
     return Scaffold(
       backgroundColor: Constans.navyblueshade1,
@@ -45,21 +53,31 @@ class CreateProfile extends StatelessWidget {
                   Column(
                     children: [
                       Container(
-                          padding: const EdgeInsets.all(0),
-                          width: 160,
-                          height: 160,
-                          child: _image == null
-                              ? CircleAvatar(
-                                  backgroundColor: kgrey300,
-                                  child: ClipOval(
-                                    child: Image.asset(
-                                      "assets/icons/users.png",
-                                      width: 155,
-                                      height: 155,
-                                    ),
+                        padding: const EdgeInsets.all(0),
+                        width: 160,
+                        height: 160,
+                        child: image == null
+                            ? CircleAvatar(
+                                backgroundColor: kgrey300,
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    "assets/icons/users.png",
+                                    width: 155,
+                                    height: 155,
                                   ),
-                                )
-                              : Container()),
+                                ),
+                              )
+                            : CircleAvatar(
+                                backgroundColor: kgrey300,
+                                child: ClipOval(
+                                  child: Image.file(
+                                    File(image.toString()),
+                                    width: 155,
+                                    height: 155,
+                                  ),
+                                ),
+                              ),
+                      ),
                     ],
                   ),
                   Positioned(
@@ -69,7 +87,7 @@ class CreateProfile extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(Constans.bigBorderRadios),
                         onTap: () async {
-                          context.userbloc.pickImage(_picker, _image);
+                          context.userbloc.pickImage(_picker, image);
                         },
                         child: Container(
                             width: 55,
@@ -97,7 +115,12 @@ class CreateProfile extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            MyButton(press: () {}, text: "Done")
+            MyButton(
+                press: () {
+                  userdata.uploadProfilePicture(
+                      _picker.toString(), image.toString());
+                },
+                text: "Done")
           ],
         ),
       )),

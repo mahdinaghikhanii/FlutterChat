@@ -29,7 +29,6 @@ environment:
 dependencies:
   appwrite: ^5.0.0
   cupertino_icons: ^1.0.2
-  file_picker: ^4.6.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
