@@ -46,10 +46,21 @@ class Home extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(Constans.defultpadding),
         child: Column(
-          children: const [
-            MyInputField(
+          children: [
+            const MyInputField(
               icon: Icons.search,
               hintText: "Search for message or users...",
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            MIteamView(
+              iconData: Icons.favorite,
+              img: 'assets/img/login.png',
+              ontap: () {},
+              subTitle: 'salam',
+              time: '22.12',
+              title: 'mahdinagni',
             )
           ],
         ),

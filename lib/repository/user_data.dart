@@ -46,7 +46,8 @@ class UserData {
       File? result = await storage.createFile(
         file: InputFile(filename: imgName, path: filePath),
         fileId: 'unique()',
-        read: ['role:all', 'user:${res.$id}'], bucketId: '62963d74b4fccb6a09f1',
+        read: ['role:all', 'user:${res.$id}'],
+        bucketId: '629de0d4e8f2a7e9669e',
         // Make sure to give [role:all]
         // So that every authenticated user can access it
         // If you don't give any read permissions, by default the sole user
@@ -73,17 +74,20 @@ class UserData {
       //  We will be updating his name in the Users Api
       await account.updateName(name: name);
       // Additional data of the user will be written in the collection
-      await database
-          .createDocument(collectionId: 'users', documentId: res.$id, data: {
-        'name': name,
-        'bio': bio,
-        'imgId': imgId,
-        'email': res.email,
-        'id': res.$id,
-      }, read: [
-        'role:all',
-        'user:${res.$id}'
-      ]);
+      await database.createDocument(
+          collectionId: '629de011285e126b9c99',
+          documentId: res.$id,
+          data: {
+            'name': name,
+            'bio': bio,
+            'imgId': imgId,
+            'email': res.email,
+            'id': res.$id,
+          },
+          read: [
+            'role:all',
+            'user:${res.$id}'
+          ]);
     } catch (_) {
       rethrow;
     }
@@ -97,7 +101,7 @@ class UserData {
     try {
       final user = await account.get();
       final data = await database.getDocument(
-          collectionId: 'users', documentId: user.$id);
+          collectionId: '629de011285e126b9c99', documentId: user.$id);
       final img = await _getProfilePicture(data.data['imgId']);
       return NoSignalUser.fromMap(data.data).copyWith(image: img);
     } catch (_) {

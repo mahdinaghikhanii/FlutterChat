@@ -125,23 +125,6 @@ class UserBloc extends Cubit<BlocState> {
     }
   }
 
-  /* Future<void> createUser() async {
-    _isloading = true;
-    if (!_formKey.currentState!.validate()) {
-      _isloading = false;
-      return;
-    }
-    _image != null
-        ? await _userData.uploadProfilePicture(_image!.path, _image!.name).then(
-            (imgId) => _userData.addUser(_name.text, _bio.text, imgId ?? ''))
-        : _userData.addUser(_name.text, _bio.text, 'assets/images/profile.png');
-
-    ref.watch(currentLoggedUserProvider.state).state =
-        await _userData.getCurrentUser();
-
-    await Navigator.of(context).pushReplacementNamed(HomePage.routename);
-  }*/
-
   void pickImage(ImagePicker? image) async {
     try {
       final XFile? imgAddres =
