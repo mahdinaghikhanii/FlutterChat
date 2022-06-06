@@ -17,7 +17,9 @@ class CreateProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = BlocProvider.of<UserBloc>(context).image;
+    TextEditingController _username = TextEditingController();
+    TextEditingController _bio = TextEditingController();
+    final image = BlocProvider.of<UserBloc>(context).img;
     final bloc = UserBloc();
     final userdata = UserData(bloc.client);
     final ImagePicker _picker = ImagePicker();
@@ -102,6 +104,8 @@ class CreateProfile extends StatelessWidget {
             ),
             MyButton(
                 press: () {
+                  context.userbloc.createUserStorage(
+                      _username.text, _bio.text, image.toString());
                   userdata.uploadProfilePicture(
                       _picker.toString(), image.toString());
                 },

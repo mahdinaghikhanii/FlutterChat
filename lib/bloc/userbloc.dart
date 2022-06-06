@@ -5,6 +5,7 @@ import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchat/module/constant.dart';
+import 'package:flutterchat/repository/user_data.dart';
 import 'package:flutterchat/views/create_profile.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -17,9 +18,10 @@ class UserBloc extends Cubit<BlocState> {
   }
 
   final ImagePicker _picker = ImagePicker();
-  XFile? image;
+  XFile? img;
 
   late Account account;
+  late UserData _userdata;
   late Storage storage;
   Client client = Client();
   _client() {
@@ -140,13 +142,29 @@ class UserBloc extends Cubit<BlocState> {
     await Navigator.of(context).pushReplacementNamed(HomePage.routename);
   }*/
 
-  pickImage(ImagePicker? image) async {
+  void pickImage(ImagePicker? image) async {
     try {
       final XFile? imgAddres =
           await _picker.pickImage(source: ImageSource.gallery);
       if (imgAddres == null) return;
-      image = imgAddres as ImagePicker?;
+      img = imgAddres;
+
       emit(LoadingImage());
+    } catch (e) {
+      emit(Failed(Exception(e)));
+    }
+  }
+
+  void createUserStorage(String name, String bio, String imgId) async {
+    if (state is Loading) return;
+
+    try {
+      emit(Loading());
+      img != null
+          ? await _userdata
+              .uploadProfilePicture(img!.path, img!.name)
+              .then((imgid) => _userdata.addUser(name, bio, imgId))
+          : _userdata.addUser(name, bio, 'assets/icons/users.png');
     } catch (e) {
       emit(Failed(Exception(e)));
     }
