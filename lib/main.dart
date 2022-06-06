@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterchat/views/create_profile.dart';
 
 import 'bloc/blocstate.dart';
 import 'bloc/onboardbloc.dart';
 import 'bloc/themebloc.dart';
 import 'bloc/userbloc.dart';
+import 'views/home.dart';
 import 'views/onboard.dart';
 
 void main() {
@@ -34,10 +34,11 @@ class MyApp extends StatelessWidget {
                 builder: (_, states) {
                   /*  if (state is Authenticated) return const Home();
                   if (state is Problems) return Login(state: state);
-                  return Login(state: states);*/
+                  return Login(state: states);
                   return CreateProfile(
                     state: state,
-                  );
+                  );*/
+                  return const Home();
                 },
               );
             }

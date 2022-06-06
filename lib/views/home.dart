@@ -9,12 +9,26 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor:  ,
       appBar: AppBar(
-        centerTitle: false,
-        title: Text(
-          'Online',
-          style: context.textTheme.subtitle2!.copyWith(
-              color: kwhite, fontWeight: FontWeight.bold, fontSize: 24),
+          automaticallyImplyLeading: false,
+          centerTitle: false,
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/icons/chatsmall.png',
+              ),
+              Text(
+                'Online',
+                style: context.textTheme.subtitle2!.copyWith(
+                    color: kwhite, fontWeight: FontWeight.bold, fontSize: 26),
+              ),
+            ],
+          )),
+      body: Container(
+        padding: const EdgeInsets.all(Constans.defultpadding),
+        child: Column(
+          children: [],
         ),
       ),
     );
