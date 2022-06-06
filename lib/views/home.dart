@@ -9,8 +9,25 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor:  ,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        fixedColor: kblack,
+        unselectedItemColor: grey,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (int index) {},
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+          BottomNavigationBarItem(icon: Icon(Icons.camera), label: "home"),
+          //   BottomNavigationBarItem(icon: Icon(Icons.settings), label: "home"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "home")
+        ],
+      ),
+      backgroundColor: Constans.navyblueshade1,
       appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Constans.navyblueshade1,
           automaticallyImplyLeading: false,
           centerTitle: false,
           title: Row(
