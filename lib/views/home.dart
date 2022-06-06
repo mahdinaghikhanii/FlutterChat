@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../module/constant.dart';
 import '../module/extension.dart';
+import '../module/widgets.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,16 +13,16 @@ class Home extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        fixedColor: kblack,
+        fixedColor: Colors.yellow.shade600.withOpacity(0.9),
         unselectedItemColor: grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         onTap: (int index) {},
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
-          BottomNavigationBarItem(icon: Icon(Icons.camera), label: "home"),
-          //   BottomNavigationBarItem(icon: Icon(Icons.settings), label: "home"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "home")
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Chats"),
+          BottomNavigationBarItem(icon: Icon(Icons.contacts), label: "Contacs"),
+          // BottomNavigationBarItem(icon: Icon(Icons.call), label: "Call"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings")
         ],
       ),
       backgroundColor: Constans.navyblueshade1,
@@ -45,7 +46,12 @@ class Home extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(Constans.defultpadding),
         child: Column(
-          children: [],
+          children: const [
+            MyInputField(
+              icon: Icons.search,
+              hintText: "Search for message or users...",
+            )
+          ],
         ),
       ),
     );
