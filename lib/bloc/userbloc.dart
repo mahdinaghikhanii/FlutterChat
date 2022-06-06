@@ -89,6 +89,7 @@ class UserBloc extends Cubit<BlocState> {
           MaterialPageRoute(builder: (context) => CreateProfile(state: state)));
     } catch (e) {
       emit(Failed(e as Exception));
+      print(e.toString());
       await showDialog(
           context: context,
           builder: (BuildContext context) => AlertDialog(
